@@ -47,12 +47,7 @@ module ActionView
 
         if priority_countries
           priority_countries_options = if use_iso_codes || ::CountrySelect.use_iso_codes
-                                         # Codes should not be downcased, but they were previous to 1.3
-                                         # which means they should continue to be until 2.0 is released in
-                                         # order to prevent breakage with existing implementations
-                                         #
-                                         # In 2.0.0, this map should actually be upcasing the codes
-                                         priority_countries.map! { |code| code.to_s.downcase }
+                                         priority_countries.map! { |code| code.to_s.upcase }
 
                                          priority_countries.map do |code|
                                            [
